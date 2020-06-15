@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () =>  {
 
+
     const API_ENDPOINT = 'http://localhost:3000/pups'
 
     const fetchAPI = url => fetch(url).then(response => response.json())
@@ -24,12 +25,14 @@ document.addEventListener("DOMContentLoaded", () =>  {
     }
 
     const updateGoodDog = pup => {
-        fetch(API_ENDPOINT, {
-            "method": "PATCH",
-            "headers": {
-                "application/json":
-            }
-        }
+        fetch(`${API_ENDPOINT}/${pup.id}`, {
+            method: "PATCH",
+            headers: {
+                'Content-Type': 'Application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(pup)
+        }).then(res => res.json())
     }
 
     const pupButton = (pup, dogBtn) => {
@@ -65,6 +68,33 @@ document.addEventListener("DOMContentLoaded", () =>  {
 
         showDiv.append(dogPic, dogName, dogBtn)
     }
+
+    const toggleFilter = () => {
+        const dogFilter = document.querySelector('#good-dog-filter')
+
+        if (dogFilter.innerText.includes("OFF")) {
+            dogFilter.innerText = "Filter good dogs: ON"
+            updateDogBar(true)
+        } else {
+            dogFilter.innerText = "Filter good dog: OFF"
+            updateDogBar()
+        }
+    }
+
+    const updateDogBar = (filter = false) => {
+        const dogFilter = document.querySelector('#good-dog-filter')
+        if (filter) {
+            let dogs = fetchAPI(API_ENDPOINT).then(data => console.log(data.filter(d => d.isGoodDog)))
+            dogs.forEach(d => console.log(d.isGoodDog))
+            // .then(dogs => dogs.filter(d => d.isGoodDog = true))
+            // let goodDogs = dogs.filter(d => d.isGoodDog = true)
+            console.log(dogs)
+        }
+    }
+
+    const dogFil = document.querySelector('#good-dog-filter')
+    dogFil.addEventListener('click', toggleFilter )
+
 
     // debugger
 
