@@ -1,0 +1,19 @@
+{
+  "name": "woof-woof-js-practice-london-web-100719",
+  "version": "1.0.0",
+  "description": "THIS GOOD APPLICATION FOR LOOKING AT DOGS BOW WOW",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bogomilam/woof-woof-js-practice-london-web-100719.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bogomilam/woof-woof-js-practice-london-web-100719/issues"
+  },
+  "homepage": "https://github.com/bogomilam/woof-woof-js-practice-london-web-100719#readme"
+}
